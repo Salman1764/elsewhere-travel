@@ -7,7 +7,7 @@
 
 ## 🌟 Live Demo & Deployment
 - **Live Web Application:** *[https://elsewhere-travel.vercel.app](https://elsewhere-travel.vercel.app)* *(or deploy via Vercel / Netlify)*
-- **GitHub Repository:** *[https://github.com/your-username/elsewhere-travel](https://github.com/your-username/elsewhere-travel)*
+- **GitHub Repository:** [https://github.com/Salman1764/elsewhere-travel](https://github.com/Salman1764/elsewhere-travel)
 
 ---
 
@@ -100,7 +100,7 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/elsewhere-travel.git
+git clone https://github.com/Salman1764/elsewhere-travel.git
 cd elsewhere-travel
 ```
 
