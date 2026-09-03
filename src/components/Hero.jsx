@@ -1,15 +1,11 @@
 import { ArrowDown, MapPin, Search } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useRef, useEffect } from "react";
+import { motion } from "framer-motion";
+import { useState } from "react";
 import { useLanguage } from "../context/LanguageContext";
-import { searchCities } from "../data/worldCountries";
 
 function Hero({ onSearchSubmit }) {
   const { t } = useLanguage();
   const [heroSearch, setHeroSearch] = useState("");
-  const [suggestions, setSuggestions] = useState([]);
-  const [showDropdown, setShowDropdown] = useState(false);
-  const searchWrapRef = useRef(null);
 
   const scrollToDestinations = () => {
     document
@@ -17,48 +13,13 @@ function Hero({ onSearchSubmit }) {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleInputChange = (e) => {
-    const val = e.target.value;
-    setHeroSearch(val);
-
-    if (val.trim().length >= 1) {
-      const matches = searchCities(val, 6);
-      setSuggestions(matches);
-      setShowDropdown(matches.length > 0);
-    } else {
-      setSuggestions([]);
-      setShowDropdown(false);
-    }
-  };
-
-  const handleSelectSuggestion = (cityName) => {
-    setHeroSearch(cityName);
-    setShowDropdown(false);
-    if (onSearchSubmit) {
-      onSearchSubmit(cityName);
-    }
-    scrollToDestinations();
-  };
-
   const handleHeroSearchSubmit = (e) => {
     e.preventDefault();
-    setShowDropdown(false);
     if (onSearchSubmit) {
       onSearchSubmit(heroSearch);
     }
     scrollToDestinations();
   };
-
-  // Close dropdown on click outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (searchWrapRef.current && !searchWrapRef.current.contains(event.target)) {
-        setShowDropdown(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
 
   const heroEase = [0.22, 1, 0.36, 1];
 
@@ -114,103 +75,69 @@ function Hero({ onSearchSubmit }) {
         </motion.div>
 
         <motion.h1
-          className="hero__title"
-          initial={{ opacity: 0, y: 35 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, y: 45, filter: "blur(8px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
           transition={{
-            duration: 1.1,
-            delay: 0.45,
+            duration: 1.15,
+            delay: 0.38,
             ease: heroEase,
           }}
         >
-          <span>{t("heroTitle1")}</span>
+          {t("heroTitleLine1")}
           <br />
-          <em>{t("heroTitle2")}</em>
+          <em>{t("heroTitleLine2")}</em>
         </motion.h1>
 
         <motion.p
-          className="hero__sub"
+          className="hero__description"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{
             duration: 0.9,
-            delay: 0.65,
+            delay: 0.62,
             ease: heroEase,
           }}
         >
-          {t("heroSubtitle")}
+          {t("heroDesc")}
         </motion.p>
 
-        {/* Search Bar with Predictive Autocomplete Dropdown */}
-        <div className="hero__search-wrapper" ref={searchWrapRef}>
-          <motion.form
-            className="hero__search"
-            onSubmit={handleHeroSearchSubmit}
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{
-              duration: 0.9,
-              delay: 0.85,
-              ease: heroEase,
-            }}
-            whileHover={{
-              y: -2,
-              scale: 1.01,
-            }}
-          >
-            <MapPin size={19} strokeWidth={1.7} />
+        <motion.form
+          className="hero__search"
+          onSubmit={handleHeroSearchSubmit}
+          initial={{
+            opacity: 0,
+            y: 28,
+            scale: 0.97,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          transition={{
+            duration: 0.9,
+            delay: 0.78,
+            ease: heroEase,
+          }}
+          whileHover={{
+            y: -2,
+            scale: 1.01,
+          }}
+        >
+          <MapPin size={19} strokeWidth={1.7} />
 
-            <input
-              type="text"
-              placeholder={t("searchPlaceholder")}
-              aria-label="Search for a destination"
-              value={heroSearch}
-              onChange={handleInputChange}
-              onFocus={() => {
-                if (suggestions.length > 0) setShowDropdown(true);
-              }}
-            />
+          <input
+            type="text"
+            placeholder={t("searchPlaceholder")}
+            aria-label="Search for a destination"
+            value={heroSearch}
+            onChange={(e) => setHeroSearch(e.target.value)}
+          />
 
-            <button type="submit" aria-label="Search destination">
-              <Search size={19} strokeWidth={1.8} />
-            </button>
-          </motion.form>
-
-          {/* Autocomplete Dropdown */}
-          <AnimatePresence>
-            {showDropdown && suggestions.length > 0 && (
-              <motion.div
-                className="hero-search-autocomplete"
-                initial={{ opacity: 0, y: -8, scale: 0.98 }}
-                animate={{ opacity: 1, y: 0, scale: 1 }}
-                exit={{ opacity: 0, y: -8, scale: 0.98 }}
-                transition={{ duration: 0.2 }}
-              >
-                <div className="autocomplete-header">
-                  <span>MATCHING DESTINATIONS</span>
-                </div>
-                {suggestions.map((city) => (
-                  <button
-                    key={`${city.name}-${city.country}`}
-                    type="button"
-                    className="hero-autocomplete-item"
-                    onClick={() => handleSelectSuggestion(city.name)}
-                  >
-                    <div className="autocomplete-icon-box">
-                      <MapPin size={14} />
-                    </div>
-                    <div className="autocomplete-text">
-                      <span className="autocomplete-city">{city.name}</span>
-                      <span className="autocomplete-sub">
-                        {city.state ? `${city.state}, ` : ""}{city.country}
-                      </span>
-                    </div>
-                  </button>
-                ))}
-              </motion.div>
-            )}
-          </AnimatePresence>
-        </div>
+          <button type="submit" aria-label="Search destination">
+            <Search size={19} strokeWidth={1.8} />
+          </button>
+        </motion.form>
       </div>
 
       <motion.button

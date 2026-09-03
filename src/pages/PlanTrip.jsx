@@ -1,12 +1,12 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect, useRef } from "react";
-import { ArrowRight, LoaderCircle, Sparkles, Clock3, Compass, Lightbulb, MapPin } from "lucide-react";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { ArrowRight, LoaderCircle, Sparkles, Clock3, Compass, Lightbulb } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import Itinerary from "../components/Itinerary";
 import RouteTransitPlanner from "../components/RouteTransitPlanner";
 import { useLanguage } from "../context/LanguageContext";
 import { useLocationContext } from "../context/LocationContext";
-import { cityLandmarksMap, searchCities } from "../data/worldCountries";
+import { cityLandmarksMap } from "../data/worldCountries";
 
 const travelStyles = [
   "Balanced",
@@ -157,38 +157,6 @@ function PlanTrip() {
   const [itinerary, setItinerary] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [destSuggestions, setDestSuggestions] = useState([]);
-  const [showDestDropdown, setShowDestDropdown] = useState(false);
-  const destWrapRef = useRef(null);
-
-  // Close destination suggestions on click outside
-  useEffect(() => {
-    function handleClickOutside(event) {
-      if (destWrapRef.current && !destWrapRef.current.contains(event.target)) {
-        setShowDestDropdown(false);
-      }
-    }
-    document.addEventListener("mousedown", handleClickOutside);
-    return () => document.removeEventListener("mousedown", handleClickOutside);
-  }, []);
-
-  const handleDestInputChange = (e) => {
-    const val = e.target.value;
-    setDestination(val);
-    if (val.trim().length >= 1) {
-      const matches = searchCities(val, 6);
-      setDestSuggestions(matches);
-      setShowDestDropdown(matches.length > 0);
-    } else {
-      setDestSuggestions([]);
-      setShowDestDropdown(false);
-    }
-  };
-
-  const handleSelectDest = (cityName) => {
-    setDestination(cityName);
-    setShowDestDropdown(false);
-  };
 
   // Auto-generate itinerary if shared link contains destination
   useEffect(() => {
@@ -384,50 +352,17 @@ function PlanTrip() {
               }}
             >
               <label htmlFor="trip-destination">Destination</label>
-              <div className="plan-trip-dest-wrapper" ref={destWrapRef}>
-                <motion.input
-                  id="trip-destination"
-                  type="text"
-                  value={destination}
-                  onChange={handleDestInputChange}
-                  onFocus={() => {
-                    if (destSuggestions.length > 0) setShowDestDropdown(true);
-                  }}
-                  placeholder="e.g. Bengaluru, Mysuru, Chitradurga, Mumbai, Kyoto..."
-                  required
-                  autoComplete="off"
-                  whileFocus={{
-                    scale: 1.01,
-                  }}
-                />
-
-                <AnimatePresence>
-                  {showDestDropdown && destSuggestions.length > 0 && (
-                    <motion.div
-                      className="dest-autocomplete-dropdown"
-                      initial={{ opacity: 0, y: -6 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -6 }}
-                      transition={{ duration: 0.18 }}
-                    >
-                      {destSuggestions.map((city) => (
-                        <button
-                          key={`${city.name}-${city.country}`}
-                          type="button"
-                          className="dest-autocomplete-item"
-                          onClick={() => handleSelectDest(city.name)}
-                        >
-                          <MapPin size={14} className="text-gold" />
-                          <div className="dest-autocomplete-info">
-                            <strong>{city.name}</strong>
-                            <span>{city.state ? `${city.state}, ` : ""}{city.country}</span>
-                          </div>
-                        </button>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
+              <motion.input
+                id="trip-destination"
+                type="text"
+                value={destination}
+                onChange={(event) => setDestination(event.target.value)}
+                placeholder="e.g. Kyoto, Rome, Santorini..."
+                required
+                whileFocus={{
+                  scale: 1.01,
+                }}
+              />
 
               <label htmlFor="trip-days">Number of days</label>
               <motion.select
