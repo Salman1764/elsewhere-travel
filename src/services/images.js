@@ -8,9 +8,17 @@ const destinationFallbacks = {
     "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=1400&q=85",
   "cape-town":
     "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1400&q=85",
+  "cape town":
+    "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1400&q=85",
+  capetown:
+    "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1400&q=85",
   santorini:
     "https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&w=1400&q=85",
   "new-york":
+    "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1400&q=85",
+  "new york":
+    "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1400&q=85",
+  newyork:
     "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1400&q=85",
   marrakech:
     "https://images.unsplash.com/photo-1517821099606-cef63a9bcab6?auto=format&fit=crop&w=1400&q=85",
@@ -69,11 +77,11 @@ const destinationFallbacks = {
   bangalore:
     "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1400&q=85",
   mysuru:
-    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1400&q=85",
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1400&q=85",
   mysore:
-    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1400&q=85",
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1400&q=85",
   chitradurga:
-    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1400&q=85",
+    "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1400&q=85",
   india:
     "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=85",
   switzerland:
@@ -113,9 +121,9 @@ const famousPlaceFallbacks = {
   "Table Mountain":
     "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=1200&q=85",
   "Boulders Beach":
-    "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1577971132997-c10be9372519?auto=format&fit=crop&w=1200&q=85",
   "V&A Waterfront":
-    "https://images.unsplash.com/photo-1576485290814-1c72aa4bbb8e?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=1200&q=85",
 
   // Santorini
   "Oia Village":
@@ -241,13 +249,13 @@ const famousPlaceFallbacks = {
 
   // Mysuru
   "Mysore Palace (Amba Vilas)":
-    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
   "Mysore Palace":
-    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
   "Chamundi Hill & Sri Chamundeshwari Temple":
-    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=85",
   "Chamundi Hill":
-    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1609766857041-ed402ea8069a?auto=format&fit=crop&w=1200&q=85",
   "Brindavan Gardens & Musical Fountains":
     "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?auto=format&fit=crop&w=1200&q=85",
   "Brindavan Gardens":
@@ -255,20 +263,26 @@ const famousPlaceFallbacks = {
 
   // Chitradurga
   "Chitradurga Fort (Kallina Kote)":
-    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1200&q=85",
   "Chitradurga Fort":
-    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1200&q=85",
   "Chandravalli Caves & Ancient Lake":
     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
   "Chandravalli Caves":
     "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
   "Vani Vilasa Sagara (Mari Kanive)":
-    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=85",
+  "Vani Vilasa Sagara":
+    "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=85",
 };
 
 export function getDestinationQuery(destination) {
-  const name = typeof destination === "object" ? destination?.name : destination;
-  return `${name || ""} city skyline architecture`.trim();
+  if (!destination) return "";
+  if (typeof destination === "string") return destination;
+  const id = destination?.id || "";
+  const name = destination?.name || "";
+  const country = destination?.country || "";
+  return `${id} ${name} ${country}`.trim();
 }
 
 export function getFamousPlaceQuery(place, destination) {
@@ -285,25 +299,30 @@ export function getFamousPlaceQuery(place, destination) {
 }
 
 export function getFallbackImage(query, width = 1400) {
-  if (!query) return "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=" + width + "&q=85";
-  const cleanQuery = query.toLowerCase();
+  if (!query) {
+    return "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=" + width + "&q=85";
+  }
 
-  // Check exact famous place name (longest specific names first!)
+  const raw = String(query).toLowerCase();
+  const cleanQuery = raw.replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
+
+  // 1. Check exact famous place name (longest specific names first!)
   const sortedFamous = Object.keys(famousPlaceFallbacks).sort((a, b) => b.length - a.length);
   for (const name of sortedFamous) {
-    const cleanName = name.toLowerCase();
-    if (cleanQuery.includes(cleanName) || cleanName.includes(cleanQuery)) {
+    const normName = name.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
+    if (cleanQuery.includes(normName) || normName.includes(cleanQuery) || raw.includes(name.toLowerCase())) {
       return famousPlaceFallbacks[name];
     }
   }
 
-  // Check destination ID or city name (longest names first: e.g. "bengaluru" before "india")
+  // 2. Check destination ID or city name (longest names first: e.g. "bengaluru" before "india")
   const sortedDests = Object.keys(destinationFallbacks).sort((a, b) => b.length - a.length);
   for (const id of sortedDests) {
-    if (cleanQuery.includes(id.toLowerCase())) {
+    const normId = id.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
+    if (cleanQuery.includes(normId) || normId.includes(cleanQuery) || raw.includes(id.toLowerCase())) {
       return destinationFallbacks[id];
     }
   }
 
-  return "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=" + width + "&q=85";
+  return "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=" + width + "&q=85";
 }

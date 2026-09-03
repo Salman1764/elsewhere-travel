@@ -15,7 +15,7 @@ import { motion } from "framer-motion";
 import { Link, useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState, useMemo } from "react";
 import destinations, { getDestinationById } from "../data/destinations";
-import { getDestinationQuery } from "../services/images";
+import { getDestinationQuery, getFallbackImage } from "../services/images";
 import { usePexelsImage } from "../hooks/usePexelsImage";
 import { getWeather } from "../services/weather";
 import WeatherCard from "../components/WeatherCard";
@@ -61,9 +61,17 @@ function DestinationDetails() {
     return getDestinationById(destinationId);
   }, [destinationId]);
 
-  const { url: heroImageUrl } = usePexelsImage(
+  const { url: pexelsHero } = usePexelsImage(
     destination ? getDestinationQuery(destination) : ""
   );
+
+  const heroImageUrl = useMemo(() => {
+    return (
+      destination?.image ||
+      pexelsHero ||
+      getFallbackImage(destination?.id || destination?.name, 1400)
+    );
+  }, [destination, pexelsHero]);
 
   const [weather, setWeather] = useState(null);
   const [weatherLoading, setWeatherLoading] = useState(false);

@@ -127,16 +127,19 @@ const destinations = [
         name: "Table Mountain",
         description:
           "A flat-topped landmark towering over the city bowl, often draped in its signature cloud 'tablecloth' and accessible via revolving cable car.",
+        image: "https://images.unsplash.com/photo-1580060839134-75a5edca2e99?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "Boulders Beach",
         description:
           "A sheltered cove of giant granite boulders harboring a charming protected colony of free-roaming African penguins.",
+        image: "https://images.unsplash.com/photo-1577971132997-c10be9372519?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "V&A Waterfront",
         description:
           "A bustling historic maritime harbor packed with art galleries, seafood restaurants, artisanal markets, and sunset boat charters.",
+        image: "https://images.unsplash.com/photo-1580619305218-8423a7ef79b4?auto=format&fit=crop&w=600&q=75",
       },
     ],
   },
@@ -197,16 +200,19 @@ const destinations = [
         name: "Central Park",
         description:
           "An 843-acre urban oasis in the heart of Manhattan featuring winding bridle paths, peaceful lakes, hidden arches, and peaceful lawns.",
+        image: "https://images.unsplash.com/photo-1534430480872-3498386e7856?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "Statue of Liberty",
         description:
           "The majestic neoclassical monument welcoming arrivals in New York Harbor, symbol of freedom and international friendship.",
+        image: "https://images.unsplash.com/photo-1522083165195-3424ed129620?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "Brooklyn Bridge",
         description:
           "A pioneering 1883 gothic-arched suspension bridge providing romantic pedestrian strolls high above the East River.",
+        image: "https://images.unsplash.com/photo-1546436836-07a91091f160?auto=format&fit=crop&w=600&q=75",
       },
     ],
   },
@@ -664,19 +670,19 @@ const destinations = [
         name: "Chitradurga Fort (Kallina Kote)",
         description:
           "A formidable medieval fortress featuring seven concentric rings of defensive stone walls, 38 hidden gateways, ancient temples, and the legendary Obavvana Kindi passage.",
-        image: "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=600&q=75",
+        image: "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "Chandravalli Caves & Ancient Lake",
         description:
           "An archaeological valley nestled between three scenic hills with subterranean cave temples once used for meditation by ancient saints and royal hermits.",
-        image: "https://images.unsplash.com/photo-1518709268805-4e9042af9f23?auto=format&fit=crop&w=600&q=75",
+        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=600&q=75",
       },
       {
         name: "Vani Vilasa Sagara (Mari Kanive)",
         description:
           "Karnataka's oldest pre-independence dam, constructed in 1907 with monumental stonework nestled peacefully in rugged scenic hills.",
-        image: "https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?auto=format&fit=crop&w=600&q=75",
+        image: "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=600&q=75",
       },
     ],
   },

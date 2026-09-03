@@ -1,12 +1,13 @@
 import { ArrowUpRight, MapPin, Heart, Calendar } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { getDestinationQuery } from "../services/images";
+import { getDestinationQuery, getFallbackImage } from "../services/images";
 import { usePexelsImage } from "../hooks/usePexelsImage";
 import { useWishlist } from "../context/WishlistContext";
 
 function DestinationCard({ destination, index = 0 }) {
-  const { url, loading } = usePexelsImage(getDestinationQuery(destination));
+  const { url: pexelsUrl, loading } = usePexelsImage(getDestinationQuery(destination));
+  const url = destination?.image || pexelsUrl || getFallbackImage(destination?.id || destination?.name, 900);
   const { isSaved, toggleWishlist } = useWishlist();
   const saved = isSaved(destination.id);
 

@@ -31,8 +31,7 @@ function FamousPlaceCard({ place, destination, index = 0 }) {
           decoding="async"
           onError={(e) => {
             e.currentTarget.onerror = null;
-            e.currentTarget.src =
-              "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=600&q=75";
+            e.currentTarget.src = getFallbackImage(place?.name, 600);
           }}
         />
 
