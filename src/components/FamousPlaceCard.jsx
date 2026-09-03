@@ -1,12 +1,14 @@
 import { motion } from "framer-motion";
 import { Sparkles, MapPin } from "lucide-react";
-import { getFamousPlaceQuery } from "../services/images";
+import { getFamousPlaceQuery, getFallbackImage } from "../services/images";
 import { usePexelsImage } from "../hooks/usePexelsImage";
 
 function FamousPlaceCard({ place, destination, index = 0 }) {
   const { url, loading } = usePexelsImage(
     getFamousPlaceQuery(place, destination)
   );
+
+  const displayImage = place.image || url || getFallbackImage(place.name, 1200);
 
   return (
     <motion.article
@@ -22,14 +24,19 @@ function FamousPlaceCard({ place, destination, index = 0 }) {
     >
       <div
         className={`famous-place-card__image-wrap ${
-          loading ? "is-loading" : ""
+          loading && !place.image ? "is-loading" : ""
         }`}
       >
         <img
-          src={url}
+          src={displayImage}
           alt={place.name}
           className="famous-place-card__image"
           loading="lazy"
+          onError={(e) => {
+            e.currentTarget.onerror = null;
+            e.currentTarget.src =
+              "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85";
+          }}
         />
 
         <div className="famous-place-card__overlay" />
@@ -45,7 +52,7 @@ function FamousPlaceCard({ place, destination, index = 0 }) {
           <h3>{place.name}</h3>
           <a
             href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
-              `${place.name} ${destination}`
+              `${place.name} ${typeof destination === "object" ? destination.name : destination}`
             )}`}
             target="_blank"
             rel="noopener noreferrer"

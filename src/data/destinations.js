@@ -582,21 +582,25 @@ const destinations = [
         name: "Lalbagh Botanical Garden & Glass House",
         description:
           "A celebrated 240-acre botanical haven commissioned by Hyder Ali in 1760, centered around an exquisite London Crystal Palace-inspired Glass House and centuries-old bonsai trees.",
+        image: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Bangalore Palace",
         description:
           "An opulent 19th-century royal estate inspired by England's Windsor Castle, featuring Tudor-style battlements, stained glass, elegant wood carvings, and lush green courtyards.",
+        image: "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Cubbon Park & Vidhana Soudha",
         description:
           "The green lungs of the city anchored by the majestic Neo-Dravidian legislative palace, illuminated brilliantly with thousands of golden lights on Sunday evenings.",
+        image: "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "ISKCON Temple Bengaluru",
         description:
           "One of the largest cultural and temple complexes in the world, perched atop the scenic Hare Krishna Hill with sweeping architectural splendor and city views.",
+        image: "https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=1200&q=85",
       },
     ],
   },
@@ -622,16 +626,19 @@ const destinations = [
         name: "Mysore Palace (Amba Vilas)",
         description:
           "A world-renowned Indo-Saracenic royal masterpiece, illuminated every Sunday and during festive seasons by nearly 100,000 incandescent golden bulbs.",
+        image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Chamundi Hill & Sri Chamundeshwari Temple",
         description:
           "A 1,000-step sacred pilgrim hill featuring a colossal monolithic Nandi Bull statue and panoramic vistas overlooking the royal cityscape.",
+        image: "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Brindavan Gardens & Musical Fountains",
         description:
           "Symmetric terrace gardens adjoining the historic Krishnarajasagara (KRS) Dam, famous for evening illuminated musical fountain spectacles.",
+        image: "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=85",
       },
     ],
   },
@@ -657,16 +664,19 @@ const destinations = [
         name: "Chitradurga Fort (Kallina Kote)",
         description:
           "A formidable medieval fortress featuring seven concentric rings of defensive stone walls, 38 hidden gateways, ancient temples, and the legendary Obavvana Kindi passage.",
+        image: "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Chandravalli Caves & Ancient Lake",
         description:
           "An archaeological valley nestled between three scenic hills with subterranean cave temples once used for meditation by ancient saints and royal hermits.",
+        image: "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
       },
       {
         name: "Vani Vilasa Sagara (Mari Kanive)",
         description:
           "Karnataka's oldest pre-independence dam, constructed in 1907 with monumental stonework nestled peacefully in rugged scenic hills.",
+        image: "https://images.unsplash.com/photo-1512343879784-a960bf40e7f2?auto=format&fit=crop&w=1200&q=85",
       },
     ],
   },

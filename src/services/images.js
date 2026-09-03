@@ -271,7 +271,8 @@ export function getDestinationQuery(destination) {
 }
 
 export function getFamousPlaceQuery(place, destination) {
-  return `${place.name} ${destination.country}`;
+  const destName = typeof destination === "object" ? (destination?.name || destination?.country || "") : (destination || "");
+  return `${place?.name || ""} ${destName}`;
 }
 
 export function getFallbackImage(query, width = 1400) {
