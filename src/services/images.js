@@ -64,6 +64,16 @@ const destinationFallbacks = {
     "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1400&q=85",
   florence:
     "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1400&q=85",
+  bengaluru:
+    "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1400&q=85",
+  bangalore:
+    "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1400&q=85",
+  mysuru:
+    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1400&q=85",
+  mysore:
+    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1400&q=85",
+  chitradurga:
+    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1400&q=85",
   india:
     "https://images.unsplash.com/photo-1524492412937-b28074a5d7da?auto=format&fit=crop&w=1400&q=85",
   switzerland:
@@ -210,6 +220,50 @@ const famousPlaceFallbacks = {
     "https://images.unsplash.com/photo-1566552881560-0be862a7c445?auto=format&fit=crop&w=1200&q=85",
   "Chhatrapati Shivaji Maharaj Terminus":
     "https://images.unsplash.com/photo-1567157577867-05ccb1388e66?auto=format&fit=crop&w=1200&q=85",
+
+  // Bengaluru
+  "Lalbagh Botanical Garden & Glass House":
+    "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=85",
+  "Lalbagh Botanical Garden":
+    "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=85",
+  "Bangalore Palace":
+    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+  "Cubbon Park & Vidhana Soudha":
+    "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85",
+  "Vidhana Soudha":
+    "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85",
+  "Cubbon Park":
+    "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=85",
+  "ISKCON Temple Bengaluru":
+    "https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=1200&q=85",
+  "Tipu Sultan's Summer Palace":
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
+
+  // Mysuru
+  "Mysore Palace (Amba Vilas)":
+    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+  "Mysore Palace":
+    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+  "Chamundi Hill & Sri Chamundeshwari Temple":
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
+  "Chamundi Hill":
+    "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
+  "Brindavan Gardens & Musical Fountains":
+    "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?auto=format&fit=crop&w=1200&q=85",
+  "Brindavan Gardens":
+    "https://images.unsplash.com/photo-1585016495481-91613a3ab1bc?auto=format&fit=crop&w=1200&q=85",
+
+  // Chitradurga
+  "Chitradurga Fort (Kallina Kote)":
+    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=85",
+  "Chitradurga Fort":
+    "https://images.unsplash.com/photo-1590766940554-634a7ed41450?auto=format&fit=crop&w=1200&q=85",
+  "Chandravalli Caves & Ancient Lake":
+    "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
+  "Chandravalli Caves":
+    "https://images.unsplash.com/photo-1544620347-c4fd4a3d5957?auto=format&fit=crop&w=1200&q=85",
+  "Vani Vilasa Sagara (Mari Kanive)":
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
 };
 
 export function getDestinationQuery(destination) {
@@ -221,17 +275,23 @@ export function getFamousPlaceQuery(place, destination) {
 }
 
 export function getFallbackImage(query, width = 1400) {
-  // Check exact famous place name
-  for (const [name, url] of Object.entries(famousPlaceFallbacks)) {
-    if (query.includes(name) || name.includes(query)) {
-      return url;
+  if (!query) return "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=" + width + "&q=85";
+  const cleanQuery = query.toLowerCase();
+
+  // Check exact famous place name (longest specific names first!)
+  const sortedFamous = Object.keys(famousPlaceFallbacks).sort((a, b) => b.length - a.length);
+  for (const name of sortedFamous) {
+    const cleanName = name.toLowerCase();
+    if (cleanQuery.includes(cleanName) || cleanName.includes(cleanQuery)) {
+      return famousPlaceFallbacks[name];
     }
   }
 
-  // Check destination ID or name
-  for (const [id, url] of Object.entries(destinationFallbacks)) {
-    if (query.toLowerCase().includes(id)) {
-      return url;
+  // Check destination ID or city name (longest names first: e.g. "bengaluru" before "india")
+  const sortedDests = Object.keys(destinationFallbacks).sort((a, b) => b.length - a.length);
+  for (const id of sortedDests) {
+    if (cleanQuery.includes(id.toLowerCase())) {
+      return destinationFallbacks[id];
     }
   }
 

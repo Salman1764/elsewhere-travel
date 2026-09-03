@@ -560,6 +560,116 @@ const destinations = [
       },
     ],
   },
+
+  {
+    id: "bengaluru",
+    name: "Bengaluru",
+    country: "India",
+    region: "Karnataka",
+    category: "Culture",
+    description:
+      "India's vibrant Garden City and technology capital harmoniously weaves historic royal palaces, sprawling botanical parks, legendary coffee culture, and thriving modernity.",
+    bestTime: "October — March",
+    currency: "Indian Rupee (INR)",
+    budgetPerDay: "₹2,500 — ₹6,500 ($30 — $80)",
+    languages: ["Kannada", "English", "Hindi"],
+    coordinates: {
+      lat: 12.9716,
+      lon: 77.5946,
+    },
+    famousPlaces: [
+      {
+        name: "Lalbagh Botanical Garden & Glass House",
+        description:
+          "A celebrated 240-acre botanical haven commissioned by Hyder Ali in 1760, centered around an exquisite London Crystal Palace-inspired Glass House and centuries-old bonsai trees.",
+      },
+      {
+        name: "Bangalore Palace",
+        description:
+          "An opulent 19th-century royal estate inspired by England's Windsor Castle, featuring Tudor-style battlements, stained glass, elegant wood carvings, and lush green courtyards.",
+      },
+      {
+        name: "Cubbon Park & Vidhana Soudha",
+        description:
+          "The green lungs of the city anchored by the majestic Neo-Dravidian legislative palace, illuminated brilliantly with thousands of golden lights on Sunday evenings.",
+      },
+      {
+        name: "ISKCON Temple Bengaluru",
+        description:
+          "One of the largest cultural and temple complexes in the world, perched atop the scenic Hare Krishna Hill with sweeping architectural splendor and city views.",
+      },
+    ],
+  },
+
+  {
+    id: "mysuru",
+    name: "Mysuru",
+    country: "India",
+    region: "Karnataka",
+    category: "Culture",
+    description:
+      "The royal City of Palaces captivates travelers with sandalwood heritage, exquisite silk weaving, centuries-old yoga traditions, and the illuminated splendor of the Amba Vilas Palace.",
+    bestTime: "October — March (Dasara Festival)",
+    currency: "Indian Rupee (INR)",
+    budgetPerDay: "₹2,000 — ₹5,000 ($25 — $60)",
+    languages: ["Kannada", "English", "Hindi"],
+    coordinates: {
+      lat: 12.2958,
+      lon: 76.6394,
+    },
+    famousPlaces: [
+      {
+        name: "Mysore Palace (Amba Vilas)",
+        description:
+          "A world-renowned Indo-Saracenic royal masterpiece, illuminated every Sunday and during festive seasons by nearly 100,000 incandescent golden bulbs.",
+      },
+      {
+        name: "Chamundi Hill & Sri Chamundeshwari Temple",
+        description:
+          "A 1,000-step sacred pilgrim hill featuring a colossal monolithic Nandi Bull statue and panoramic vistas overlooking the royal cityscape.",
+      },
+      {
+        name: "Brindavan Gardens & Musical Fountains",
+        description:
+          "Symmetric terrace gardens adjoining the historic Krishnarajasagara (KRS) Dam, famous for evening illuminated musical fountain spectacles.",
+      },
+    ],
+  },
+
+  {
+    id: "chitradurga",
+    name: "Chitradurga",
+    country: "India",
+    region: "Karnataka",
+    category: "Culture",
+    description:
+      "The legendary 'Stone Fortress' city surrounded by dramatic granite boulder hills, historic rainwater harvesting tanks, and storied legends of fierce Nayaka warriors.",
+    bestTime: "November — February",
+    currency: "Indian Rupee (INR)",
+    budgetPerDay: "₹1,500 — ₹3,800 ($20 — $45)",
+    languages: ["Kannada", "English", "Hindi"],
+    coordinates: {
+      lat: 14.2251,
+      lon: 76.398,
+    },
+    famousPlaces: [
+      {
+        name: "Chitradurga Fort (Kallina Kote)",
+        description:
+          "A formidable medieval fortress featuring seven concentric rings of defensive stone walls, 38 hidden gateways, ancient temples, and the legendary Obavvana Kindi passage.",
+      },
+      {
+        name: "Chandravalli Caves & Ancient Lake",
+        description:
+          "An archaeological valley nestled between three scenic hills with subterranean cave temples once used for meditation by ancient saints and royal hermits.",
+      },
+      {
+        name: "Vani Vilasa Sagara (Mari Kanive)",
+        description:
+          "Karnataka's oldest pre-independence dam, constructed in 1907 with monumental stonework nestled peacefully in rugged scenic hills.",
+      },
+    ],
+  },
 ];
 
 export const allDestinations = [...destinations, ...worldCities];

@@ -668,31 +668,40 @@ export function createDynamicCityDestination(query) {
 
   const slugId = cityName.toLowerCase().replace(/[^a-z0-9]+/g, "-");
 
+  // Check if known real landmarks exist for this city
+  const knownLandmarks = cityLandmarksMap[clean] || cityLandmarksMap[slugId];
+  const dynamicFamousPlaces = knownLandmarks
+    ? knownLandmarks.map((lm) => ({
+        name: lm.name,
+        description: `Notable ${lm.type || "cultural landmark"} in ${cityName}, offering storied architectural heritage, vibrant atmosphere, and authentic experiences.`,
+      }))
+    : [
+        {
+          name: `${cityName} Cultural Heart & Heritage District`,
+          description: `The cultural heartbeat of ${cityName}, known for authentic avenue walks, cafes, and historic architecture.`,
+        },
+        {
+          name: `${cityName} Grand Historic Landmark`,
+          description: `The most celebrated architectural landmark in ${cityName}, offering storied local heritage.`,
+        },
+        {
+          name: `${cityName} Scenic Viewpoint & Gardens`,
+          description: `Panoramic vantage point commanding sweeping scenic views across ${cityName} and surrounding landscapes.`,
+        },
+      ];
+
   return {
     id: slugId,
     name: cityName,
     country: countryName,
-    region: "World Discovery",
+    region: countryName === "India" ? "Karnataka / Regional India" : "World Discovery",
     category: "Iconic City",
-    description: `Discover the architectural wonder, vibrant street culture, and authentic travel atmosphere of ${cityName}.`,
-    bestTime: "Spring & Autumn",
-    currency: "Local Currency / USD",
-    budgetPerDay: "$75 — $180",
-    languages: ["Local Language", "English"],
+    description: `Discover the architectural wonder, vibrant street culture, lush gardens, and authentic travel atmosphere of ${cityName}.`,
+    bestTime: countryName === "India" ? "October — March" : "Spring & Autumn",
+    currency: countryName === "India" ? "Indian Rupee (INR)" : "Local Currency / USD",
+    budgetPerDay: countryName === "India" ? "₹2,500 — ₹6,000" : "$75 — $180",
+    languages: countryName === "India" ? ["Local Language", "English", "Hindi"] : ["Local Language", "English"],
     coordinates,
-    famousPlaces: [
-      {
-        name: `${cityName} Historic Old Town`,
-        description: `The cultural heartbeat of ${cityName}, known for cobblestone avenues, cafes, and historic squares.`,
-      },
-      {
-        name: `${cityName} Cathedral / Main Landmark`,
-        description: `The most photographed architectural landmark in ${cityName}, offering storied heritage.`,
-      },
-      {
-        name: `${cityName} Waterfront / Scenic Overlook`,
-        description: `Panoramic vantage point commanding sweeping views across ${cityName} and surrounding landscapes.`,
-      },
-    ],
+    famousPlaces: dynamicFamousPlaces,
   };
 }
