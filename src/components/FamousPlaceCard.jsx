@@ -4,11 +4,11 @@ import { getFamousPlaceQuery, getFallbackImage } from "../services/images";
 import { usePexelsImage } from "../hooks/usePexelsImage";
 
 function FamousPlaceCard({ place, destination, index = 0 }) {
-  const { url, loading } = usePexelsImage(
-    getFamousPlaceQuery(place, destination)
-  );
+  // If place.image is explicitly defined, use it instantly without any slow API delay!
+  const searchQuery = place?.image ? "" : getFamousPlaceQuery(place, destination);
+  const { url: pexelsUrl, loading } = usePexelsImage(searchQuery);
 
-  const displayImage = place.image || url || getFallbackImage(place.name, 1200);
+  const displayImage = place?.image || pexelsUrl || getFallbackImage(place?.name, 600);
 
   return (
     <motion.article
@@ -17,25 +17,22 @@ function FamousPlaceCard({ place, destination, index = 0 }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
       transition={{
-        duration: 0.6,
-        delay: index * 0.1,
+        duration: 0.5,
+        delay: index * 0.08,
         ease: [0.22, 1, 0.36, 1],
       }}
     >
-      <div
-        className={`famous-place-card__image-wrap ${
-          loading && !place.image ? "is-loading" : ""
-        }`}
-      >
+      <div className="famous-place-card__image-wrap">
         <img
           src={displayImage}
           alt={place.name}
           className="famous-place-card__image"
-          loading="lazy"
+          loading="eager"
+          decoding="async"
           onError={(e) => {
             e.currentTarget.onerror = null;
             e.currentTarget.src =
-              "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85";
+              "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=600&q=75";
           }}
         />
 
