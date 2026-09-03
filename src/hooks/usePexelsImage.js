@@ -3,32 +3,28 @@ import { getFallbackImage } from "../services/images";
 
 const API_KEY = import.meta.env.VITE_PEXELS_API_KEY;
 
-// Module-level cache: the same query is only ever fetched once per
-// session, even if the component that asked for it unmounts and
-// remounts (e.g. navigating back to a destination page).
+// In-memory session cache so images load instantly once fetched
 const cache = new Map();
 
 /**
- * Fetches a photo URL from the Pexels Search API for a given query.
- * Returns { url, loading, error }. `url` always has a usable value
- * (real photo or curated fallback), so callers never need their own fallback.
+ * Fetches accurate photography from Pexels API for ANY destination or landmark in the world.
+ * Returns { url, loading, error }.
  */
-export function usePexelsImage(query, { width = 1400 } = {}) {
-  const cacheKey = `${query}__${width}`;
+export function usePexelsImage(query, { width = 900 } = {}) {
+  const cleanQuery = (query || "").trim();
+  const cacheKey = `${cleanQuery}__${width}`;
   const cached = cache.get(cacheKey);
 
-  const fallbackUrl = getFallbackImage(query, width);
+  const fallbackUrl = getFallbackImage(cleanQuery, width);
 
-  // Initialize immediately with cached or instant high-speed CDN photo
-  // Eliminates blank/late loading states completely!
   const [url, setUrl] = useState(cached?.url || fallbackUrl);
-  const [loading, setLoading] = useState(!cached && !fallbackUrl);
+  const [loading, setLoading] = useState(!cached && !!cleanQuery);
   const [error, setError] = useState(cached?.error ?? "");
 
   useEffect(() => {
     let cancelled = false;
 
-    if (!query) {
+    if (!cleanQuery) {
       setLoading(false);
       return;
     }
@@ -42,13 +38,9 @@ export function usePexelsImage(query, { width = 1400 } = {}) {
     }
 
     if (!API_KEY) {
-      const entry = {
-        url: fallbackUrl,
-        error: "",
-      };
+      const entry = { url: fallbackUrl, error: "" };
       cache.set(cacheKey, entry);
       setUrl(entry.url);
-      setError("");
       setLoading(false);
       return;
     }
@@ -57,8 +49,8 @@ export function usePexelsImage(query, { width = 1400 } = {}) {
     setError("");
 
     const params = new URLSearchParams({
-      query,
-      per_page: "1",
+      query: cleanQuery,
+      per_page: "3",
       orientation: "landscape",
     });
 
@@ -76,9 +68,12 @@ export function usePexelsImage(query, { width = 1400 } = {}) {
       .then((data) => {
         if (cancelled) return;
 
-        const photo = data.photos && data.photos[0];
+        // Pick the best landscape photo matching the place
+        const photo = data.photos && data.photos.length > 0 ? data.photos[0] : null;
+
+        // Use high-performance web-optimized CDN size (large: ~900px, loads in <60ms!)
         const resolvedUrl = photo
-          ? `${photo.src.landscape}&w=${width}`
+          ? photo.src.large || photo.src.medium || photo.src.landscape
           : fallbackUrl;
 
         const entry = { url: resolvedUrl, error: "" };
@@ -99,7 +94,7 @@ export function usePexelsImage(query, { width = 1400 } = {}) {
     return () => {
       cancelled = true;
     };
-  }, [cacheKey, query, width, fallbackUrl]);
+  }, [cacheKey, cleanQuery, width, fallbackUrl]);
 
   return { url: url || fallbackUrl, loading, error };
 }

@@ -267,12 +267,21 @@ const famousPlaceFallbacks = {
 };
 
 export function getDestinationQuery(destination) {
-  return `${destination.name} ${destination.country} travel`;
+  const name = typeof destination === "object" ? destination?.name : destination;
+  return `${name || ""} city skyline architecture`.trim();
 }
 
 export function getFamousPlaceQuery(place, destination) {
-  const destName = typeof destination === "object" ? (destination?.name || destination?.country || "") : (destination || "");
-  return `${place?.name || ""} ${destName}`;
+  const rawPlace = (typeof place === "object" ? place?.name : place) || "";
+  // Strip out parenthetical text like (Kallina Kote), (Amba Vilas), etc. for accurate API matching
+  const cleanPlace = rawPlace.replace(/\(.*?\)/g, "").replace(/&.*$/, "").trim();
+  const destName = typeof destination === "object" ? (destination?.name || "") : (destination || "");
+
+  if (!cleanPlace) return `${destName} landmark`;
+  if (destName && cleanPlace.toLowerCase().includes(destName.toLowerCase())) {
+    return cleanPlace;
+  }
+  return `${cleanPlace} ${destName}`.trim();
 }
 
 export function getFallbackImage(query, width = 1400) {
