@@ -7,7 +7,7 @@
 
 ## 🌟 Live Demo & Deployment
 - **Live Web Application:** *[https://elsewhere-travel.vercel.app](https://elsewhere-travel.vercel.app)* *(or deploy via Vercel / Netlify)*
-- **GitHub Repository:** *[https://github.com/your-username/design-esthetics-travel](https://github.com/your-username/design-esthetics-travel)*
+- **GitHub Repository:** *[https://github.com/your-username/elsewhere-travel](https://github.com/your-username/elsewhere-travel)*
 
 ---
 
@@ -100,8 +100,8 @@
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/your-username/design-esthetics-travel.git
-cd design-esthetics-travel
+git clone https://github.com/your-username/elsewhere-travel.git
+cd elsewhere-travel
 ```
 
 ### 2. Install Dependencies
