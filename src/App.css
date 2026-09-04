@@ -1021,6 +1021,15 @@
   color: #ffffff;
 }
 
+.destination-details__hero-image-wrap {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0;
+}
+
 .destination-details__hero-image {
   position: absolute;
   inset: 0;

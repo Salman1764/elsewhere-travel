@@ -189,6 +189,9 @@ function DestinationDetails() {
             src={heroImageUrl}
             alt={destination.name}
             className="destination-details__hero-image"
+            loading="eager"
+            fetchPriority="high"
+            decoding="async"
           />
         </motion.div>
 

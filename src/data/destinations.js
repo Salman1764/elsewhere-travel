@@ -1,4 +1,5 @@
 import { worldCities, createDynamicCityDestination, countryCityMap } from "./worldCountries";
+import { getFallbackImage } from "../services/images";
 
 const destinations = [
   {
@@ -698,7 +699,12 @@ export function getDestinationById(id) {
   const foundInCurated = destinations.find(
     (d) => d.id === normalizedId || d.name.toLowerCase() === normalizedId
   );
-  if (foundInCurated) return foundInCurated;
+  if (foundInCurated) {
+    return {
+      ...foundInCurated,
+      image: foundInCurated.image || getFallbackImage(foundInCurated.id, 1400),
+    };
+  }
 
   // 2. Check world cities database
   const foundInWorld = worldCities.find(
@@ -707,10 +713,19 @@ export function getDestinationById(id) {
       c.name.toLowerCase() === normalizedId ||
       c.country.toLowerCase() === normalizedId
   );
-  if (foundInWorld) return foundInWorld;
+  if (foundInWorld) {
+    return {
+      ...foundInWorld,
+      image: foundInWorld.image || getFallbackImage(foundInWorld.id, 1400),
+    };
+  }
 
   // 3. Dynamic generator for ANY city in the world!
-  return createDynamicCityDestination(id);
+  const dynamic = createDynamicCityDestination(id);
+  return {
+    ...dynamic,
+    image: dynamic.image || getFallbackImage(dynamic.id, 1400),
+  };
 }
 
 export default destinations;

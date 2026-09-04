@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { ArrowRight, LoaderCircle, Sparkles, Clock3, Compass, Lightbulb } from "lucide-react";
 import { useSearchParams } from "react-router-dom";
 import Itinerary from "../components/Itinerary";
@@ -158,10 +158,14 @@ function PlanTrip() {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
 
-  // Auto-generate itinerary if shared link contains destination
+  const initializedFromUrl = useRef(false);
+
+  // Auto-generate itinerary if shared link contains destination (only on initial mount)
   useEffect(() => {
+    if (initializedFromUrl.current) return;
     const destParam = searchParams.get("destination");
-    if (destParam && !itinerary) {
+    if (destParam) {
+      initializedFromUrl.current = true;
       const daysParam = searchParams.get("days") || "3";
       const styleParam = searchParams.get("style") || "Balanced";
       const cleanDest = destParam.trim().replace(/\s*,\s*/g, ", ");
@@ -176,7 +180,7 @@ function PlanTrip() {
       );
       setItinerary(fallback);
     }
-  }, [searchParams]);
+  }, []);
 
   const generateItinerary = async (event) => {
     if (event) event.preventDefault();
@@ -448,8 +452,77 @@ function PlanTrip() {
           </motion.div>
 
           <div className="plan-trip-preview">
-            {!itinerary && !isLoading && (
+            {isLoading ? (
               <motion.div
+                key="loading"
+                className="plan-trip-preview__loading"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.4 }}
+              >
+                <motion.div
+                  className="plan-trip-ai-loader"
+                  animate={{
+                    scale: [1, 1.08, 1],
+                    opacity: [0.65, 1, 0.65],
+                    rotate: [0, 4, -4, 0],
+                  }}
+                  transition={{
+                    duration: 2.2,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                >
+                  <Sparkles size={30} strokeWidth={1.4} />
+                </motion.div>
+
+                <motion.h2
+                  initial={{ opacity: 0, y: 15 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.15,
+                  }}
+                >
+                  Planning your journey...
+                </motion.h2>
+
+                <motion.p
+                  initial={{ opacity: 0, y: 12 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{
+                    duration: 0.6,
+                    delay: 0.25,
+                  }}
+                >
+                  Elsewhere AI is creating a day-by-day experience for you.
+                </motion.p>
+              </motion.div>
+            ) : itinerary ? (
+              <motion.div
+                key="itinerary"
+                initial={{
+                  opacity: 0,
+                  y: 25,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                }}
+                transition={{
+                  duration: 0.8,
+                  ease,
+                }}
+              >
+                <RouteTransitPlanner
+                  originName={location?.name || "Bengaluru"}
+                  destinationName={destination || "Mumbai"}
+                />
+                <Itinerary itinerary={itinerary} />
+              </motion.div>
+            ) : (
+              <motion.div
+                key="empty"
                 className="plan-trip-preview__empty"
                 initial={{
                   opacity: 0,
@@ -511,77 +584,6 @@ function PlanTrip() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            )}
-
-            {isLoading && (
-              <motion.div
-                className="plan-trip-preview__loading"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.5 }}
-              >
-                <motion.div
-                  className="plan-trip-ai-loader"
-                  animate={{
-                    scale: [1, 1.08, 1],
-                    opacity: [0.65, 1, 0.65],
-                    rotate: [0, 4, -4, 0],
-                  }}
-                  transition={{
-                    duration: 2.2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <Sparkles size={30} strokeWidth={1.4} />
-                </motion.div>
-
-                <motion.h2
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.15,
-                  }}
-                >
-                  Planning your journey...
-                </motion.h2>
-
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.25,
-                  }}
-                >
-                  Elsewhere AI is creating a day-by-day experience
-                  for you.
-                </motion.p>
-              </motion.div>
-            )}
-
-            {itinerary && (
-              <motion.div
-                initial={{
-                  opacity: 0,
-                  y: 25,
-                }}
-                animate={{
-                  opacity: 1,
-                  y: 0,
-                }}
-                transition={{
-                  duration: 0.8,
-                  ease,
-                }}
-              >
-                <RouteTransitPlanner
-                  originName={location?.name || "Bengaluru"}
-                  destinationName={destination || "Mumbai"}
-                />
-                <Itinerary itinerary={itinerary} />
               </motion.div>
             )}
           </div>
