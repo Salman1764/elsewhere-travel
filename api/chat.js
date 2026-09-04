@@ -8,7 +8,7 @@ const sleep = (milliseconds) =>
   new Promise((resolve) => setTimeout(resolve, milliseconds));
 
 async function generateWithRetry(message) {
-  const models = ["gemini-3.7-flash", "gemini-2.5-flash-lite"];
+  const models = ["gemini-2.5-flash", "gemini-2.0-flash", "gemini-1.5-flash"];
 
   let lastError = null;
 
