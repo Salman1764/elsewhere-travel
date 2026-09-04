@@ -157,6 +157,25 @@ function PlanTrip() {
   const [itinerary, setItinerary] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
+  const [loadingStep, setLoadingStep] = useState(0);
+
+  const loadingSteps = [
+    { label: "Analyzing seasonal climate & daylight hours", icon: "☀️" },
+    { label: "Curating iconic landmarks & quiet local gems", icon: "🏛️" },
+    { label: "Calculating multi-modal transit & train routes", icon: "🚆" },
+    { label: "Composing bespoke morning-to-night itinerary flow", icon: "✨" },
+  ];
+
+  useEffect(() => {
+    if (!isLoading) {
+      setLoadingStep(0);
+      return;
+    }
+    const interval = setInterval(() => {
+      setLoadingStep((prev) => (prev + 1) % 4);
+    }, 1400);
+    return () => clearInterval(interval);
+  }, [isLoading]);
 
   const initializedFromUrl = useRef(false);
 
@@ -413,7 +432,9 @@ function PlanTrip() {
 
               <motion.button
                 type="submit"
-                className="plan-trip-form__submit"
+                className={`plan-trip-form__submit ${
+                  isLoading ? "plan-trip-form__submit--loading" : ""
+                }`}
                 disabled={isLoading}
                 whileHover={
                   !isLoading
@@ -434,7 +455,7 @@ function PlanTrip() {
                 {isLoading ? (
                   <>
                     <LoaderCircle className="spin-icon" size={18} />
-                    <span>Creating your trip...</span>
+                    <span>Curating your journey...</span>
                   </>
                 ) : (
                   <>
@@ -456,47 +477,74 @@ function PlanTrip() {
               <motion.div
                 key="loading"
                 className="plan-trip-preview__loading"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 0.4 }}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.45, ease }}
               >
-                <motion.div
-                  className="plan-trip-ai-loader"
-                  animate={{
-                    scale: [1, 1.08, 1],
-                    opacity: [0.65, 1, 0.65],
-                    rotate: [0, 4, -4, 0],
-                  }}
-                  transition={{
-                    duration: 2.2,
-                    repeat: Infinity,
-                    ease: "easeInOut",
-                  }}
-                >
-                  <Sparkles size={30} strokeWidth={1.4} />
-                </motion.div>
+                <div className="plan-trip-loading__glow" />
 
-                <motion.h2
-                  initial={{ opacity: 0, y: 15 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.15,
-                  }}
-                >
-                  Planning your journey...
-                </motion.h2>
+                <div className="plan-trip-loading__badge">
+                  <Sparkles size={13} className="sparkle-amber" />
+                  <span>AI JOURNEY STUDIO • IN PROGRESS</span>
+                </div>
 
-                <motion.p
-                  initial={{ opacity: 0, y: 12 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.25,
-                  }}
-                >
-                  Elsewhere AI is creating a day-by-day experience for you.
-                </motion.p>
+                <div className="plan-trip-loading__orb-container">
+                  <div className="plan-trip-loading__orb-ring" />
+                  <div className="plan-trip-loading__orb-core">
+                    <Compass size={28} className="plan-trip-loading__compass spin-slow" />
+                  </div>
+                </div>
+
+                <h2 className="plan-trip-loading__title">
+                  Crafting your journey
+                  <br />
+                  <em>to {destination ? destination : "your escape"}...</em>
+                </h2>
+
+                <p className="plan-trip-loading__subtitle">
+                  Elsewhere AI is designing an unhurried, day-by-day {travelStyle.toLowerCase()} experience curated with authentic insight.
+                </p>
+
+                <div className="plan-trip-loading__progress-card">
+                  <div className="plan-trip-loading__step-header">
+                    <span className="plan-trip-loading__step-indicator">
+                      <span className="pulsing-dot" />
+                      Step {loadingStep + 1} of 4
+                    </span>
+                    <span className="plan-trip-loading__step-percent">
+                      {Math.round(((loadingStep + 1) / 4) * 100)}%
+                    </span>
+                  </div>
+
+                  <div className="plan-trip-loading__step-label">
+                    <span className="plan-trip-loading__step-emoji">
+                      {loadingSteps[loadingStep].icon}
+                    </span>
+                    <span>{loadingSteps[loadingStep].label}</span>
+                  </div>
+
+                  <div className="plan-trip-loading__bar-track">
+                    <motion.div
+                      className="plan-trip-loading__bar-fill"
+                      initial={{ width: "25%" }}
+                      animate={{ width: `${((loadingStep + 1) / 4) * 100}%` }}
+                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                    />
+                  </div>
+                </div>
+
+                <div className="plan-trip-loading__pills">
+                  <span className="plan-trip-pill">
+                    <Sparkles size={12} /> Curated Landmarks
+                  </span>
+                  <span className="plan-trip-pill">
+                    <Clock3 size={12} /> Balanced Pacing
+                  </span>
+                  <span className="plan-trip-pill">
+                    <Compass size={12} /> Transit & Rail
+                  </span>
+                </div>
               </motion.div>
             ) : itinerary ? (
               <motion.div
