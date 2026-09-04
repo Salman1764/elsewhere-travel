@@ -564,7 +564,7 @@ function PlanTrip() {
               >
                 <RouteTransitPlanner
                   originName={location?.name || "Bengaluru"}
-                  destinationName={destination || "Mumbai"}
+                  destinationName={itinerary?.destination || destination || "Mumbai"}
                 />
                 <Itinerary itinerary={itinerary} />
               </motion.div>
