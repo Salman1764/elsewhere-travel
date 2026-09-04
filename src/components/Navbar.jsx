@@ -98,10 +98,6 @@ function Navbar() {
           className={`navbar__links ${menuOpen ? "navbar__links--open" : ""}`}
           aria-label="Main navigation"
         >
-          <Link to="/" onClick={closeMenu}>
-            {t("navDiscover")}
-          </Link>
-
           {routerLocation.pathname === "/" ? (
             <a
               href="#destinations"
