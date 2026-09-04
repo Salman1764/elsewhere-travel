@@ -62,7 +62,7 @@ function DestinationDetails() {
   }, [destinationId]);
 
   const { url: pexelsHero } = usePexelsImage(
-    destination ? getDestinationQuery(destination) : ""
+    destination?.image ? "" : destination ? getDestinationQuery(destination) : ""
   );
 
   const heroImageUrl = useMemo(() => {

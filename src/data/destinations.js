@@ -574,6 +574,8 @@ const destinations = [
     country: "India",
     region: "Karnataka",
     category: "Culture",
+    image:
+      "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1400&q=85",
     description:
       "India's vibrant Garden City and technology capital harmoniously weaves historic royal palaces, sprawling botanical parks, legendary coffee culture, and thriving modernity.",
     bestTime: "October — March",
@@ -618,6 +620,8 @@ const destinations = [
     country: "India",
     region: "Karnataka",
     category: "Culture",
+    image:
+      "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1400&q=85",
     description:
       "The royal City of Palaces captivates travelers with sandalwood heritage, exquisite silk weaving, centuries-old yoga traditions, and the illuminated splendor of the Amba Vilas Palace.",
     bestTime: "October — March (Dasara Festival)",
@@ -656,6 +660,8 @@ const destinations = [
     country: "India",
     region: "Karnataka",
     category: "Culture",
+    image:
+      "https://images.unsplash.com/photo-1606293926075-69a00dbfde81?auto=format&fit=crop&w=1400&q=85",
     description:
       "The legendary 'Stone Fortress' city surrounded by dramatic granite boulder hills, historic rainwater harvesting tanks, and storied legends of fierce Nayaka warriors.",
     bestTime: "November — February",

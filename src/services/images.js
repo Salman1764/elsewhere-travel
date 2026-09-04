@@ -243,7 +243,7 @@ const famousPlaceFallbacks = {
   "Cubbon Park":
     "https://images.unsplash.com/photo-1542273917363-3b1817f69a2d?auto=format&fit=crop&w=1200&q=85",
   "ISKCON Temple Bengaluru":
-    "https://images.unsplash.com/photo-1621252179027-94459d278660?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1590077428593-a55bb07c4665?auto=format&fit=crop&w=1200&q=85",
   "Tipu Sultan's Summer Palace":
     "https://images.unsplash.com/photo-1582510003544-4d00b7f74220?auto=format&fit=crop&w=1200&q=85",
 
@@ -447,23 +447,31 @@ export function getFallbackImage(query, width = 1400) {
     return "https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=" + width + "&q=85";
   }
 
-  const raw = String(query).toLowerCase();
+  const raw = String(query).toLowerCase().trim();
   const cleanQuery = raw.replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
 
-  // 1. Check exact famous place name (longest specific names first!)
+  // 1. Exact match for city destination IDs or names first (avoids landmarks containing city names stealing city hero)
+  const sortedDests = Object.keys(destinationFallbacks).sort((a, b) => b.length - a.length);
+  for (const id of sortedDests) {
+    const normId = id.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
+    if (cleanQuery === normId || raw === id.toLowerCase()) {
+      return destinationFallbacks[id];
+    }
+  }
+
+  // 2. Check famous place name (longest specific names first!)
   const sortedFamous = Object.keys(famousPlaceFallbacks).sort((a, b) => b.length - a.length);
   for (const name of sortedFamous) {
     const normName = name.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
-    if (cleanQuery.includes(normName) || normName.includes(cleanQuery) || raw.includes(name.toLowerCase())) {
+    if (cleanQuery === normName || cleanQuery.includes(normName) || normName.includes(cleanQuery)) {
       return famousPlaceFallbacks[name];
     }
   }
 
-  // 2. Check destination ID or city name (longest names first: e.g. "bengaluru" before "india")
-  const sortedDests = Object.keys(destinationFallbacks).sort((a, b) => b.length - a.length);
+  // 3. Fallback partial check for destination ID or city name
   for (const id of sortedDests) {
     const normId = id.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
-    if (cleanQuery.includes(normId) || normId.includes(cleanQuery) || raw.includes(id.toLowerCase())) {
+    if (cleanQuery.includes(normId) || normId.includes(cleanQuery)) {
       return destinationFallbacks[id];
     }
   }
