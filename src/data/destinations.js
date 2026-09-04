@@ -703,6 +703,10 @@ export function getDestinationById(id) {
     return {
       ...foundInCurated,
       image: foundInCurated.image || getFallbackImage(foundInCurated.id, 1400),
+      famousPlaces: (foundInCurated.famousPlaces || []).map((p) => ({
+        ...p,
+        image: p.image || getFallbackImage(p.name, 600),
+      })),
     };
   }
 
@@ -717,6 +721,10 @@ export function getDestinationById(id) {
     return {
       ...foundInWorld,
       image: foundInWorld.image || getFallbackImage(foundInWorld.id, 1400),
+      famousPlaces: (foundInWorld.famousPlaces || []).map((p) => ({
+        ...p,
+        image: p.image || getFallbackImage(p.name, 600),
+      })),
     };
   }
 
@@ -725,6 +733,10 @@ export function getDestinationById(id) {
   return {
     ...dynamic,
     image: dynamic.image || getFallbackImage(dynamic.id, 1400),
+    famousPlaces: (dynamic.famousPlaces || []).map((p) => ({
+      ...p,
+      image: p.image || getFallbackImage(p.name, 600),
+    })),
   };
 }
 

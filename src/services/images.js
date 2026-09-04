@@ -21,7 +21,7 @@ const destinationFallbacks = {
   newyork:
     "https://images.unsplash.com/photo-1485871981521-5b1fd3805eee?auto=format&fit=crop&w=1400&q=85",
   marrakech:
-    "https://images.unsplash.com/photo-1517821099606-cef63a9bcab6?auto=format&fit=crop&w=1400&q=85",
+    "https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=1400&q=85",
   bangkok:
     "https://images.unsplash.com/photo-1508009603885-50cf7c579365?auto=format&fit=crop&w=1400&q=85",
   tokyo:
@@ -143,7 +143,7 @@ const famousPlaceFallbacks = {
 
   // Marrakech
   "Jemaa el-Fnaa":
-    "https://images.unsplash.com/photo-1517821099606-cef63a9bcab6?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1597212618440-806262de4f6b?auto=format&fit=crop&w=1200&q=85",
   "Bahia Palace":
     "https://images.unsplash.com/photo-1548013146-72479768bada?auto=format&fit=crop&w=1200&q=85",
   "Jardin Majorelle":
@@ -235,7 +235,7 @@ const famousPlaceFallbacks = {
   "Lalbagh Botanical Garden":
     "https://images.unsplash.com/photo-1588416936097-41850ab3d86d?auto=format&fit=crop&w=1200&q=85",
   "Bangalore Palace":
-    "https://images.unsplash.com/photo-1600100397608-f010f421a97d?auto=format&fit=crop&w=1200&q=85",
+    "https://images.unsplash.com/photo-1585155770447-2f66e2a397b5?auto=format&fit=crop&w=1200&q=85",
   "Cubbon Park & Vidhana Soudha":
     "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=1200&q=85",
   "Vidhana Soudha":
@@ -274,6 +274,150 @@ const famousPlaceFallbacks = {
     "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=85",
   "Vani Vilasa Sagara":
     "https://images.unsplash.com/photo-1584551246679-0daf3d275d0f?auto=format&fit=crop&w=1200&q=85",
+
+  // Jaipur
+  "Hawa Mahal (Palace of Winds)":
+    "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=85",
+  "Hawa Mahal":
+    "https://images.unsplash.com/photo-1599661046289-e31897846e41?auto=format&fit=crop&w=1200&q=85",
+  "Amber Fort & Palace":
+    "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=85",
+  "Amber Fort":
+    "https://images.unsplash.com/photo-1598890777032-bde835ba27c2?auto=format&fit=crop&w=1200&q=85",
+  "City Palace & Jantar Mantar":
+    "https://images.unsplash.com/photo-1599661046827-dacff0c0f09a?auto=format&fit=crop&w=1200&q=85",
+
+  // Zurich
+  "Lake Zurich & Uetliberg":
+    "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?auto=format&fit=crop&w=1200&q=85",
+  "Lake Zurich":
+    "https://images.unsplash.com/photo-1515488764276-beab7607c1e6?auto=format&fit=crop&w=1200&q=85",
+  "Old Town (Altstadt) & Grossmünster":
+    "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=85",
+  "Grossmünster":
+    "https://images.unsplash.com/photo-1527668752968-14dc70a27c95?auto=format&fit=crop&w=1200&q=85",
+  "Bahnhofstrasse & Lindenhof":
+    "https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?auto=format&fit=crop&w=1200&q=85",
+
+  // Munich
+  "Marienplatz & New Town Hall":
+    "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=85",
+  "Marienplatz":
+    "https://images.unsplash.com/photo-1595867818082-083862f3d630?auto=format&fit=crop&w=1200&q=85",
+  "Nymphenburg Palace":
+    "https://images.unsplash.com/photo-1587330979470-3595ac045ab0?auto=format&fit=crop&w=1200&q=85",
+  "English Garden & Eisbach Wave":
+    "https://images.unsplash.com/photo-1596484552834-6a58f850e0a1?auto=format&fit=crop&w=1200&q=85",
+
+  // Bergen
+  "Bryggen Hanseatic Wharf":
+    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=85",
+  "Bryggen":
+    "https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=85",
+  "Fløibanen Funicular & Mount Fløyen":
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+
+  // Venice
+  "St. Mark's Square & Basilica":
+    "https://images.unsplash.com/photo-1514890547357-a9ee288728e0?auto=format&fit=crop&w=1200&q=85",
+  "Grand Canal & Rialto Bridge":
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=85",
+  "Grand Canal":
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=85",
+  "Rialto Bridge":
+    "https://images.unsplash.com/photo-1523906834658-6e24ef2386f9?auto=format&fit=crop&w=1200&q=85",
+
+  // Prague
+  "Charles Bridge":
+    "https://images.unsplash.com/photo-1541849546-216549ae216d?auto=format&fit=crop&w=1200&q=85",
+  "Prague Castle & St. Vitus Cathedral":
+    "https://images.unsplash.com/photo-1519671482749-fd09be7ccebf?auto=format&fit=crop&w=1200&q=85",
+  "Old Town Square & Astronomical Clock":
+    "https://images.unsplash.com/photo-1563298723-dcfebaa392e3?auto=format&fit=crop&w=1200&q=85",
+
+  // Vienna
+  "Schönbrunn Palace & Gardens":
+    "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=85",
+  "Schönbrunn Palace":
+    "https://images.unsplash.com/photo-1516550893923-42d28e5677af?auto=format&fit=crop&w=1200&q=85",
+  "St. Stephen's Cathedral":
+    "https://images.unsplash.com/photo-1564507592333-c60657eea523?auto=format&fit=crop&w=1200&q=85",
+  "Belvedere Palace":
+    "https://images.unsplash.com/photo-1520645521318-f03a712f0e67?auto=format&fit=crop&w=1200&q=85",
+
+  // Banff
+  "Lake Louise & Victoria Glacier":
+    "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=85",
+  "Lake Louise":
+    "https://images.unsplash.com/photo-1503614472-8c93d56e92ce?auto=format&fit=crop&w=1200&q=85",
+  "Moraine Lake & Valley of the Ten Peaks":
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+  "Moraine Lake":
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+
+  // Reykjavik
+  "Hallgrímskirkja Church":
+    "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1200&q=85",
+  "Hallgrímskirkja":
+    "https://images.unsplash.com/photo-1504893524553-b855bce32c67?auto=format&fit=crop&w=1200&q=85",
+  "Blue Lagoon Geothermal Spa":
+    "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=85",
+  "Blue Lagoon":
+    "https://images.unsplash.com/photo-1509099836639-18ba1795216d?auto=format&fit=crop&w=1200&q=85",
+  "Harpa Concert Hall":
+    "https://images.unsplash.com/photo-1529963183134-61a90db47eaf?auto=format&fit=crop&w=1200&q=85",
+
+  // Queenstown
+  "Milford Sound":
+    "https://images.unsplash.com/photo-1507699622108-4be3abd695ad?auto=format&fit=crop&w=1200&q=85",
+  "Lake Wakatipu":
+    "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=1200&q=85",
+
+  // Seoul
+  "Gyeongbokgung Palace":
+    "https://images.unsplash.com/photo-1538485399081-7191377e8241?auto=format&fit=crop&w=1200&q=85",
+  "Bukchon Hanok Village":
+    "https://images.unsplash.com/photo-1517154421773-0529f29ea451?auto=format&fit=crop&w=1200&q=85",
+
+  // Lisbon
+  "Belém Tower (Torre de Belém)":
+    "https://images.unsplash.com/photo-1509840841025-9088ba78a826?auto=format&fit=crop&w=1200&q=85",
+  "Belém Tower":
+    "https://images.unsplash.com/photo-1509840841025-9088ba78a826?auto=format&fit=crop&w=1200&q=85",
+  "Tram 28 & Alfama Quarter":
+    "https://images.unsplash.com/photo-1588614959060-4d144f28b207?auto=format&fit=crop&w=1200&q=85",
+  "Tram 28":
+    "https://images.unsplash.com/photo-1588614959060-4d144f28b207?auto=format&fit=crop&w=1200&q=85",
+
+  // Amsterdam
+  "Canal Ring & Jordaan":
+    "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=85",
+  "Canal Ring":
+    "https://images.unsplash.com/photo-1512470876302-972faa2aa9a4?auto=format&fit=crop&w=1200&q=85",
+  "Rijksmuseum":
+    "https://images.unsplash.com/photo-1583292650898-7d22cd27ca6f?auto=format&fit=crop&w=1200&q=85",
+
+  // Cusco
+  "Machu Picchu":
+    "https://images.unsplash.com/photo-1526392060635-9d6019884377?auto=format&fit=crop&w=1200&q=85",
+  "Sacsayhuamán":
+    "https://images.unsplash.com/photo-1589802829985-817e51171b92?auto=format&fit=crop&w=1200&q=85",
+
+  // Singapore
+  "Marina Bay Sands":
+    "https://images.unsplash.com/photo-1525625293386-3f8f99389edd?auto=format&fit=crop&w=1200&q=85",
+  "Gardens by the Bay & Supertree Grove":
+    "https://images.unsplash.com/photo-1506351421178-63b52a2d2562?auto=format&fit=crop&w=1200&q=85",
+  "Gardens by the Bay":
+    "https://images.unsplash.com/photo-1506351421178-63b52a2d2562?auto=format&fit=crop&w=1200&q=85",
+  "Jewel Changi Airport":
+    "https://images.unsplash.com/photo-1569154941061-e231b4725ef1?auto=format&fit=crop&w=1200&q=85",
+
+  // Florence
+  "Florence Cathedral (Duomo di Firenze)":
+    "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=85",
+  "Duomo di Firenze":
+    "https://images.unsplash.com/photo-1543429776-2782fc8e1acd?auto=format&fit=crop&w=1200&q=85",
 };
 
 export function getDestinationQuery(destination) {
